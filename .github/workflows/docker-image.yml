@@ -13,6 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag alantelles/helloultra:$(date +%s)
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Build and push to docker
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_ID }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        repository: alantelles/helloultra
+        tag_with_ref: true
