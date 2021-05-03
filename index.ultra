@@ -6,6 +6,10 @@ $router.get('/', :index, function(params)
     live Base('Hello world')
 end)
 
+$router.post('/', :postTest, function(params)
+    live $request[:body_content]
+end)
+
 $router.get('/:other', :other, function(params)
     live Base('Other route. Parameter: ' + (params[:other]))
 end)
