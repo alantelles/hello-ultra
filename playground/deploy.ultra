@@ -1,0 +1,16 @@
+include @Core.Request
+
+body = {
+    "name": "jigasera",
+    "port": 3500,
+    "domain": "alantelles.com",
+    "image": "alantelles/helloultra:1.1.0"
+}
+headers = {
+    "Content-Type": "application/json"
+}
+url = "http://minipaas.alantelles.com/app"
+# url = "http://localhost:3500"
+
+r = Request.post(url, JSON.create(body), headers)
+print(r.text)
